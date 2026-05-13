@@ -1,0 +1,13 @@
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  
+  // Enable CORS if you plan on connecting a web UI client
+  app.enableCors();
+  
+  await app.listen(process.env.PORT || 3000);
+  console.log('Audio AI Server listening on: http://localhost:' + (process.env.PORT || 3000));
+}
+bootstrap();
